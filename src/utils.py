@@ -18,3 +18,13 @@ def read_players() -> bool:
     data.players_db = config
     return bool(config)
 
+def write_players() -> None:
+    """Записывает в файл данных игроков информацию из соответствующей глобальной структуры данных."""
+    config = ConfigParser()
+
+    for player_name in data.players_db:
+        config[player_name] = {key: value for key, value in data.players_db.items()}
+
+    with open(data.PLAYERS_PATH, "w", encoding="utf-8") as file_in:
+        config.write(file_in)
+
