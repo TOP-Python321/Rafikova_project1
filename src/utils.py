@@ -5,6 +5,7 @@
 from configparser import ConfigParser
 from shutil import get_terminal_size
 import data
+import help
 
 
 def read_players() -> bool:
@@ -48,6 +49,12 @@ def show_title() -> None:
     line2 = f"\n#{' ' * (width-2)}#\n"
     text_line = f'#{"Игра КРЕСТИКИ_НОЛИКИ".center(width-2)}#'
     print(line1+line2+text_line+line2+line1)
-
+    question_show_help()
     return None
 
+
+def question_show_help() -> None:
+    """Запрашивает у пользователя показать ли правила игры"""
+    answer = input('Показать правила игры? (Да/Нет) > ')
+    if answer == 'Да' or answer == 'да':
+        help.show_help()
