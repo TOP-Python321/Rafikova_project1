@@ -58,3 +58,18 @@ def question_show_help() -> None:
     answer = input('Показать правила игры? (Да/Нет) > ')
     if answer == 'Да' or answer == 'да':
         help.show_help()
+
+
+def field_template(dim: int) -> str:
+
+    """Принимает размерность игрового поля и возвращает строку шаблона игрового поля:"""
+
+    width = dim * 4 + 1
+    h_line, v_line = '–', '|'
+    h_line = f'\n{h_line * width}\n'
+    return h_line.join(
+        v_line.join(' {} ' for _ in range(dim))
+        for _ in range(dim)
+    )
+
+
