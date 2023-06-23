@@ -8,7 +8,7 @@ from pathlib import Path
 
 PLAYERS_PATH = Path(r'..\data\players.ini')
 SAVES_PATH = Path(r'..\data\saves.txt')
-HELP_PATH = Path(r'..\data\help.txt')
+HELP_PATH = Path(r'..\docs\help.txt')
 
 PROMPT = ' > '
 
