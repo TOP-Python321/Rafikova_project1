@@ -4,16 +4,15 @@
 
 from configparser import ConfigParser
 from shutil import get_terminal_size
+
 import data
 import help
 
 
 def read_players() -> bool:
-
     """
     Читает файл данных игроков, сохраняет информацию в соответствующую глобальную структуру данных. Возвращает True, если в файле данных игроков есть хотя бы одна запись, иначе False.
     """
-
     config = ConfigParser()
     config.read(data.PLAYERS_PATH)
     config = {
@@ -28,21 +27,20 @@ def read_players() -> bool:
 
 
 def write_players() -> None:
-
     """Записывает в файл данных игроков информацию из соответствующей глобальной структуры данных."""
     config = ConfigParser()
 
+    # КОММЕНТАРИЙ: а ещё у объектов типа ConfigParser есть метод read_dict()
     for player_name in data.players_db:
         config[player_name] = {key: value for key, value in data.players_db.items()}
 
-    with open(data.PLAYERS_PATH, "w", encoding="utf-8") as file_in:
-        config.write(file_in)
+    with open(data.PLAYERS_PATH, "w", encoding="utf-8") as file_out:
+        config.write(file_out)
 
     return None
 
 
 def show_title() -> None:
-
     """Выводит на экран заголовок игры при запуске программы"""
     width = get_terminal_size().columns - 1
     line1 = f'{"#" * width}'
@@ -61,9 +59,7 @@ def question_show_help() -> None:
 
 
 def field_template(dim: int) -> str:
-
     """Принимает размерность игрового поля и возвращает строку шаблона игрового поля:"""
-
     width = dim * 4 + 1
     h_line, v_line = '–', '|'
     h_line = f'\n{h_line * width}\n'
