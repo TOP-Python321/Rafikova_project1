@@ -43,11 +43,13 @@ def write_players() -> None:
 def show_title() -> None:
     """Выводит на экран заголовок игры при запуске программы"""
     width = get_terminal_size().columns - 1
-    line1 = f'{"#" * width}'
+    line1 = f"{'#' * width}"
     line2 = f"\n#{' ' * (width-2)}#\n"
-    text_line = f'#{"Игра КРЕСТИКИ_НОЛИКИ".center(width-2)}#'
+    text_line = f"#{'Игра КРЕСТИКИ_НОЛИКИ'.center(width - 2)}#"
     print(line1+line2+text_line+line2+line1)
+    # ИСПРАВИТЬ: это больше похоже на логику макро-уровня — вызов question_show_help() стоит вынести из данной функции, и использовать независимо (хотя бы потому, что вы можете захотеть добавить условия к этому вызову)
     question_show_help()
+    # УДАЛИТЬ: избыточная строчка кода — если явный возврат отсутствует, то функция неявно вернёт None
     return None
 
 
