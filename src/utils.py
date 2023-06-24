@@ -60,12 +60,20 @@ def question_show_help() -> None:
 
 def field_template(dim: int) -> str:
     """Принимает размерность игрового поля и возвращает строку шаблона игрового поля:"""
+    # ИСПРАВИТЬ: dim*3 + (dim-1) => dim*4 - 1
     width = dim * 4 + 1
     h_line, v_line = '–', '|'
     h_line = f'\n{h_line * width}\n'
     return h_line.join(
+        # ИСПРАВИТЬ: эту строку тоже можно сгенерировать один раз заранее
         v_line.join(' {} ' for _ in range(dim))
         for _ in range(dim)
     )
 
+# >>> print(field_template(3).format(*['X']*9))
+#  X | X | X
+# –––––––––––––
+#  X | X | X
+# –––––––––––––
+#  X | X | X
 
