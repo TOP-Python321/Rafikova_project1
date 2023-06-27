@@ -8,13 +8,14 @@ from pathlib import Path
 
 PLAYERS_PATH = Path(r'..\data\players.ini')
 SAVES_PATH = Path(r'..\data\saves.txt')
-HELP_PATH = Path(r'..\docs\help.txt')
+HELP_PATH = Path(r'..\data\help.txt')
 
 PROMPT = ' > '
 
 MESSAGES = {
     'ввод имени': 'введите имя игрока',
     'некорректное имя': 'имя игрока должно начинаться с буквы, содержать только буквы, цифры и символ подчёркивания',
+    'правила игры': 'Показать правила игры? (Да/Нет)',
     # '': '',
 }
 
@@ -34,3 +35,14 @@ NAME_PATTERN = compile(r'[A-Za-zА-ЯЁа-яё][A-Za-zА-ЯЁа-яё\d_]+')
 
 players_db: dict[str, dict[str, int]] = {}
 saves_db: dict[tuple[str, str], dict] = {}
+
+
+dim: int = 3
+dim_range = range(dim)
+all_cells: int = dim**2
+
+
+TOKENS = ('X', 'O')
+players: list[str] = []
+
+turns: dict[int, str] = {}
