@@ -6,7 +6,7 @@ from configparser import ConfigParser
 from shutil import get_terminal_size
 
 import data
-import help
+import main
 
 
 def read_players() -> bool:
@@ -57,7 +57,7 @@ def question_show_help() -> None:
     answer = input(f'{data.MESSAGES["правила игры"]}{data.PROMPT}').lower()
     # ИСПРАВИТЬ: а строковые методы конвертации регистра буквенных символов разве отменили?)
     if answer == 'да' or answer == 'yes':
-        help.show_help()
+        print(main.text_rules)
 
 
 def field_template(dim: int) -> str:
