@@ -29,11 +29,10 @@ def read_players() -> bool:
 def write_players() -> None:
     """Записывает в файл данных игроков информацию из соответствующей глобальной структуры данных."""
     config = ConfigParser()
-
+    config.read_dict(data.players_db)
     # КОММЕНТАРИЙ: а ещё у объектов типа ConfigParser есть метод read_dict()
-    for player_name in data.players_db:
-        config[player_name] = {key: value for key, value in data.players_db.items()}
-
+    # for player_name in data.players_db:
+    # config[player_name] = {key: value for key, value in data.players_db.items()}
     with open(data.PLAYERS_PATH, "w", encoding="utf-8") as file_out:
         config.write(file_out)
 
