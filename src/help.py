@@ -1,7 +1,7 @@
 """
 Раздел помощи.
 """
-
+from pprint import pprint
 import data
 
 def read_rules() -> str:
@@ -11,4 +11,10 @@ def read_rules() -> str:
         text_file = file_in.read()
     # ИСПРАВИТЬ: и вывод, и возврат? я бы сказал: определитесь
     return text_file
+
+
+def show_commands() -> None:
+    """Выводит на экран команды игры"""
+    pprint(data.COMMANDS)
+
 
