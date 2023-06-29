@@ -1,7 +1,6 @@
 """
 Раздел помощи.
 """
-from pprint import pprint
 import data
 
 def read_rules() -> str:
@@ -15,6 +14,6 @@ def read_rules() -> str:
 
 def show_commands() -> None:
     """Выводит на экран команды игры"""
-    pprint(data.COMMANDS)
+    print(*(f'{k!r}: {v}' for k, v in data.COMMANDS.items()), sep=',\n')
 
 
