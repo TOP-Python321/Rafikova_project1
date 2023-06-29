@@ -71,6 +71,18 @@ def field_template(dim: int) -> str:
         # ИСПРАВИТЬ: эту строку тоже можно сгенерировать один раз заранее
 
 
-
+def winning_combinations(dim: int) -> tuple[set]:
+    """Генерирует и возвращает кортеж выигрышных комбинаций"""
+    result = ()
+    # горизонтали
+    for i in range(0, dim**2, dim):
+        result += (set(range(i, i+dim)), )
+    # вертикали
+    for i in range(0, dim):
+        result += (set(range(i, dim**2, dim)), )
+    # диагонали
+    result += (set(range(0, dim**2 + 1, dim+1)), )
+    result += (set(range(dim-1, dim**2-1, dim - 1)),)
+    return result
 
 
