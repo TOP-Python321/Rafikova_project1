@@ -26,6 +26,22 @@ def read_players() -> bool:
     return bool(config)
 
 
+def read_saves() -> None:
+    """Читает файл сохранённой партии, сохраняет информацию в соответствующую глобальную структуру данных  """
+    saves = data.SAVES_PATH.read_text(encoding='utf-8').split('\n')
+    for save in saves:
+        players, turns, dim = save.split('!')
+        data.saves_db |= {
+            tuple(players.split(',')): {
+                'dim': int(dim),
+                'turns': {
+                    int(turn): data.TOKENS[i%2]
+                    for i, turn in enumerate(turns.split(','))
+                },
+            }
+        }
+
+
 def write_players() -> None:
     """Записывает в файл данных игроков информацию из соответствующей глобальной структуры данных."""
     config = ConfigParser()
@@ -58,6 +74,7 @@ def question_show_help() -> None:
     # ИСПРАВИТЬ: а строковые методы конвертации регистра буквенных символов разве отменили?)
     if answer == 'да' or answer == 'yes':
         print(help.read_rules())
+
 
 
 def field_template(dim: int) -> str:
