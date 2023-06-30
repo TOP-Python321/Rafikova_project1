@@ -110,3 +110,10 @@ def dim_input() -> int:
         if data.DIM_PATTERN.fullmatch(dim):
             return int(dim)
         print(f' {data.MESSAGES["некорректная размерность"]} ')
+
+
+def change_dim(new_dim: int) -> None:
+    """Принимает и изменяет размерность поля, перезаписывает глобальные переменные"""
+    data.dim = new_dim
+    data.dim_range = range(new_dim)
+    data.all_cells = new_dim**2
