@@ -1,11 +1,10 @@
 """ Точка входа: управляющий код """
 
-import utils
 import data
 import game
 import help
 import player
-
+import utils
 
 
 # 1. Чтение файлов данных
@@ -51,7 +50,7 @@ while True:
         ...
 
     elif command in data.COMMANDS['изменить размер поля']:
-        ...
+        utils.change_dim(utils.dim_input())
 
     elif command in data.COMMANDS['выйти']:
         break
