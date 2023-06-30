@@ -4,6 +4,7 @@
 
 # проект
 import data
+import utils
 
 
 def get_human_turn() -> int | None:
@@ -44,3 +45,10 @@ def game() -> list[str] | None:
     else:
         # ничья
         return []
+
+
+def load(players: tuple[str, str], save: dict) -> None:
+    """Перезаписывает глобальные переменные переданными сохранённой партии"""
+    data.players = list(players)
+    data.turns = save['turns']
+    utils.change_dim(save['dim'])
