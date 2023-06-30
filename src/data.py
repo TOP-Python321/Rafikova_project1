@@ -45,6 +45,8 @@ dim: int = 3
 dim_range = range(dim)
 all_cells: int = dim**2
 
+# имя авторизованного игрока
+authorized: str
 
 TOKENS = ('X', 'O')
 players: list[str] = []

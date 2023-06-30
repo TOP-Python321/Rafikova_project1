@@ -25,6 +25,8 @@ def get_player_name() -> None:
         utils.write_players()
         # вывод раздела помощи
         utils.question_show_help()
+    # сохранение имени авторизованного игрока
+    data.authorized = name
     # б) добавление имени игрока к списку активных игроков
     data.players += [name]
 
