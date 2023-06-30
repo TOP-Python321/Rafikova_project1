@@ -77,15 +77,26 @@ def question_show_help() -> None:
         print(help.read_rules())
 
 
-def field_template(dim: int) -> str:
-    """Принимает размерность игрового поля и возвращает строку шаблона игрового поля:"""
-    # ИСПРАВИТЬ: dim*3 + (dim-1) => dim*4 - 1
-    width = dim * 4 - 1
-    h_line, v_line = '–', '|'
-    h_line = f'\n{h_line * width}\n'
-    v_line = v_line.join(' {} ' for _ in range(dim))
-    return h_line.join(v_line for _ in range(dim))
-        # ИСПРАВИТЬ: эту строку тоже можно сгенерировать один раз заранее
+# def field_template(dim: int) -> str:
+#     """Принимает размерность игрового поля и возвращает строку шаблона игрового поля:"""
+    # # ИСПРАВИТЬ: dim*3 + (dim-1) => dim*4 - 1
+    # width = dim * 4 - 1
+    # h_line, v_line = '–', '|'
+    # h_line = f'\n{h_line * width}\n'
+    # v_line = v_line.join(' {} ' for _ in range(dim))
+    # return h_line.join(v_line for _ in range(dim))
+    #     # ИСПРАВИТЬ: эту строку тоже можно сгенерировать один раз заранее
+
+def field_template(data_width: int = None) -> str:
+    """"""
+    if data_width is None:
+        field_width = data.dim*(3 + max(len(t) for t in data.TOKENS)) - 1
+    else:
+        field_width = data.dim*(3 + data_width) - 1
+    v_sep, h_sep = '|', '—'
+    v_sep = v_sep.join([' {} ']*data.dim)
+    h_sep = f'\n{h_sep*field_width}\n'
+    return h_sep.join([v_sep]*data.dim)
 
 
 def winning_combinations(dim: int) -> tuple[set]:
